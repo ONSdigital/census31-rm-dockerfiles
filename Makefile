@@ -1,32 +1,35 @@
+# Set the container runtime based on architecture, default to docker for amd64 and podman for arm64
+DOCKER ?= $(shell if [ "$$(uname -m)" = "arm64" ]; then echo podman; else echo docker; fi)
+
 .PHONY: jdk21-maven-node22 gcloud-pubsub-emulator tinyproxy cloudsql-proxy python-pipenv cloud-sdk-terraform eq-stub owasp-venom
 
 jdk21-maven-node22:
-	docker build ./jdk21-maven-node22 -t jdk21-mvn-node22-npm:latest
+	$(DOCKER) build --platform linux/amd64 ./jdk21-maven-node22 -t jdk21-mvn-node22-npm:latest
 
 gcloud-pubsub-emulator:
-	docker build ./gcloud-pubsub-emulator -t gcloud-pubsub-emulator:latest
+	$(DOCKER) build --platform linux/amd64 ./gcloud-pubsub-emulator -t gcloud-pubsub-emulator:latest
 
 tinyproxy:
-	docker build ./tinyproxy -t tinyproxy:latest
+	$(DOCKER) build --platform linux/amd64 ./tinyproxy -t tinyproxy:latest
 
 cloudsql-proxy:
-	docker build ./cloudsql-proxy -t cloudsql-proxy:latest
+	$(DOCKER) build --platform linux/amd64 ./cloudsql-proxy -t cloudsql-proxy:latest
 
 python-pipenv: python-pipenv-3.14
 
 python-pipenv-3.12:
-	docker build --build-arg="PYTHON_TAG=$$(cat python-pipenv/python-3.12-tag.txt)" ./python-pipenv -t python-pipenv:3.12
+	$(DOCKER) build --platform linux/amd64 --build-arg="PYTHON_TAG=$$(cat python-pipenv/python-3.12-tag.txt)" ./python-pipenv -t python-pipenv:3.12
 
 python-pipenv-3.14:
-	docker build --build-arg="PYTHON_TAG=$$(cat python-pipenv/python-3.14-tag.txt)" ./python-pipenv -t python-pipenv:3.14
+	$(DOCKER) build --platform linux/amd64 --build-arg="PYTHON_TAG=$$(cat python-pipenv/python-3.14-tag.txt)" ./python-pipenv -t python-pipenv:3.14
 
 cloud-sdk-terraform:
-	docker build ./cloud-sdk-terraform -t cloud-sdk-terraform:latest
+	$(DOCKER) build --platform linux/amd64 ./cloud-sdk-terraform -t cloud-sdk-terraform:latest
 
 eq-stub:
-	docker build ./eq-stub -t census-rm-eq-stub:latest
+	$(DOCKER) build --platform linux/amd64 ./eq-stub -t census-rm-eq-stub:latest
 
 owasp-venom:
-	docker build ./owasp-venom -t venom:latest
+	$(DOCKER) build --platform linux/amd64 ./owasp-venom -t venom:latest
 
-build-all: gcloud-pubsub-emulator tinyproxy cloudsql-proxy python-pipenv python-pipenv-3.12 cloud-sdk-terraform eq-stub owasp-venom
+build-all: jdk21-maven-node22 gcloud-pubsub-emulator tinyproxy cloudsql-proxy python-pipenv python-pipenv-3.12 cloud-sdk-terraform eq-stub owasp-venom
