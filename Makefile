@@ -4,7 +4,7 @@ DOCKER ?= $(shell if [ "$$(uname -m)" = "arm64" ]; then echo podman; else echo d
 .PHONY: jdk21-maven-node22 gcloud-pubsub-emulator tinyproxy cloudsql-proxy python-pipenv cloud-sdk-terraform eq-stub owasp-venom
 
 jdk21-maven-node22:
-	$(DOCKER) build ./jdk21-maven-node22 -t jdk21-mvn-node22-npm:latest
+	$(DOCKER) build --platform linux/amd64 ./jdk21-maven-node22 -t jdk21-mvn-node22-npm:latest
 
 gcloud-pubsub-emulator:
 	$(DOCKER) build --platform linux/amd64 ./gcloud-pubsub-emulator -t gcloud-pubsub-emulator:latest
