@@ -1,5 +1,5 @@
 ARG PYTHON_TAG
-FROM python:${PYTHON_TAG}
+FROM mirror.gcr.io/library/python:${PYTHON_TAG}
 
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends build-essential gcc
