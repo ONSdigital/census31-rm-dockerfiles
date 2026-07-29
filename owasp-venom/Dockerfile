@@ -1,4 +1,4 @@
-FROM ovhcom/venom
+FROM mirror.gcr.io/ovhcom/venom
 
 VOLUME /workdir/results
 VOLUME /workdir/tests

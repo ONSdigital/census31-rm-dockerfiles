@@ -1,7 +1,7 @@
 # Google Cloud Pub/Sub Documentation
 # https://cloud.google.com/pubsub/docs/
 
-FROM google/cloud-sdk:alpine
+FROM mirror.gcr.io/google/cloud-sdk:alpine
 RUN apk --update add openjdk11-jre
 RUN gcloud components install --quiet beta pubsub-emulator
 

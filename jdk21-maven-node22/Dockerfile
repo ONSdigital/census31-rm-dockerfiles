@@ -1,4 +1,4 @@
-FROM eclipse-temurin:21.0.11_10-jdk
+FROM mirror.gcr.io/library/eclipse-temurin:21.0.11_10-jdk
 
 ARG MAVEN_VERSION=3.8.6
 ARG USER_HOME_DIR="/root"

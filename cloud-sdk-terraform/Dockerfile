@@ -1,4 +1,4 @@
-FROM google/cloud-sdk:slim
+FROM mirror.gcr.io/google/cloud-sdk:slim
 
 ARG TFENV_VERSION="v3.0.0"
 ARG TERRAFORM_INITIAL_VERSION="1.7.2"
