@@ -2,7 +2,7 @@ FROM mirror.gcr.io/library/python:3.12.12-slim@sha256:dc9e92fcdc085ad86dda976f4c
 
 WORKDIR /app
 COPY app.py app.py
-COPY Pipfile* /app
+COPY Pipfile* /app/
 EXPOSE 5000
 RUN pip3 install pipenv && pipenv install --deploy --system
 
