@@ -11,7 +11,7 @@ Run it locally as part of [docker-dev](https://github.com/ONSdigital/census-rm-d
 Build a new image by running:
 
 ```sh
-docker build . -t europe-west2-docker.pkg.dev/ssdc-rm-ci/docker/gcloud-pubsub-emulator:latest
+docker build . -t europe-west2-docker.pkg.dev/c31-rm-ci-prod/rm-docker-snapshot/gcloud-pubsub-emulator:latest
 ```
 
 ## Usage
