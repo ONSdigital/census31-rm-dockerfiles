@@ -26,10 +26,7 @@ python-pipenv-3.14:
 cloud-sdk-terraform:
 	$(DOCKER) build --platform linux/amd64 ./cloud-sdk-terraform -t europe-west2-docker.pkg.dev/c31-rm-ci-prod/rm-docker-snapshot/cloud-sdk-terraform:latest
 
-eq-stub:
-	$(DOCKER) build --platform linux/amd64 ./eq-stub -t europe-west2-docker.pkg.dev/c31-rm-ci-prod/rm-docker-snapshot/census-rm-eq-stub:latest
-
 owasp-venom:
 	$(DOCKER) build --platform linux/amd64 ./owasp-venom -t europe-west2-docker.pkg.dev/c31-rm-ci-prod/rm-docker-snapshot/venom:latest
 
-build-all: jdk21-maven-node22 gcloud-pubsub-emulator tinyproxy cloudsql-proxy python-pipenv python-pipenv-3.12 cloud-sdk-terraform eq-stub owasp-venom
+build-all: jdk21-maven-node22 gcloud-pubsub-emulator tinyproxy cloudsql-proxy python-pipenv python-pipenv-3.12 cloud-sdk-terraform owasp-venom
