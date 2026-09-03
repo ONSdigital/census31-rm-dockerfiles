@@ -7,10 +7,6 @@ lint:
 start:
 	pipenv run python app.py
 
-build:
-	docker build -t europe-west2-docker.pkg.dev/c31-rm-ci-prod/rm-docker-snapshot/census-rm-eq-stub:latest .
-
-eq-stub: build
 
 docker-run:
 	docker run -d --name=eq-stub -p 8918:5000 europe-west2-docker.pkg.dev/c31-rm-ci-prod/rm-docker-snapshot/census-rm-eq-stub:latest
